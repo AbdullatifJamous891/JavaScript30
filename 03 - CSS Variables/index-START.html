@@ -22,9 +22,22 @@
 
   <style>
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    /* CSS variables */
+    :root {
+      --base: #f6af49;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     body {
       text-align: center;
@@ -48,6 +61,22 @@
   </style>
 
   <script>
+    function setSpacing() {
+      document.documentElement.style.setProperty('--spacing', this.value + 'px');
+    }
+    function setBlur() {
+      document.documentElement.style.setProperty('--blur', this.value + 'px');
+    }
+    function setBase() {
+      document.documentElement.style.setProperty('--base', this.value);
+    }
+
+    document.querySelector('#spacing').addEventListener('change', setSpacing);
+    document.querySelector('#spacing').addEventListener('mousemove', setSpacing);
+    document.querySelector('#blur').addEventListener('change', setBlur);
+    document.querySelector('#blur').addEventListener('mousemove', setBlur);
+    document.querySelector('#base').addEventListener('change', setBase)
+
   </script>
 
 </body>
