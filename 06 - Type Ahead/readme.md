@@ -13,4 +13,5 @@ This allows for input `word` to be converted into a regex, with flags `g` for "g
 
 Event "change" only happens when you click outside the input field. "keyup" happens whenever a key is done being pressed.
 
-`.match()` and `.replace()` need more attention from me.
+`.match()` finds a regex inside a string and `.replace()`
+replaces it - but only the first occurrence of each.

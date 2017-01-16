@@ -104,6 +104,49 @@
   </div>
 
 <script>
+  var currentIndex = 0;
+  var shift = false;
+  var inputs = document.querySelectorAll('input');
+
+  var setChangeListeners = function (input, index) {
+    input.addEventListener('change', function() {
+      if(shift) {
+        var diff = index-currentIndex;
+        if(diff > 0) {
+          while(diff > 0) {
+            inputs[index-diff].checked = true;
+            diff--;
+          }
+        } else {
+          while (diff < 0) {
+            inputs[index-diff].checked = true;
+            diff++;
+          }
+        }
+      } else {
+        currentIndex = index;
+      }
+    });
+  };
+
+  inputs.forEach(function(input, index) {
+    setChangeListeners(input, index);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 16) {
+      shift = true;
+    }
+  });
+
+  document.addEventListener('keyup', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 16) { // 16 is the key code for shift
+      shift = false;
+    }
+  });
+
 </script>
 </body>
 </html>
